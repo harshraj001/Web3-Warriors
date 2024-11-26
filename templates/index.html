@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CryptoShop - Web3 Shopping Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.theme.min.css" rel="stylesheet" />
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet" />
+    <script
+        src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script data-border-radius="small" data-color="#000000"
+        src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img alt="CryptoShop" class="h-8 w-auto"
+                        src="static/images/ecom.jpeg" />
+                </div>
+                <div class="flex-1 flex items-center justify-center px-8">
+                    <div class="w-full max-w-lg">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"> <i
+                                    class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom"
+                                placeholder="Search products..." type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="!rounded-button bg-custom text-white px-4 py-2 flex items-center space-x-2"
+                        id="connectWalletButton">
+                        <i class="fas fa-wallet"></i>
+                        <span>Connect Wallet</span>
+                    </button>
+                    <div class="relative" id="walletDropdown" style="display: none;">
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 flex items-center space-x-2"
+                            id="walletButton">
+                            <i class="fas fa-wallet"></i>
+                            <span id="walletAddress"></span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                            <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                                id="disconnectWalletButton">
+                                Disconnect Wallet
+                            </button>
+                        </div>
+                    </div>
+                    <button class="relative p-2" id="cartButton">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl"></i>
+                        <span class="absolute top-0 right-0 -mt-1 -mr-1 px-2 py-0.5 bg-red-500 text-white text-xs rounded-full" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="relative rounded-xl overflow-hidden mb-12 h-[400px]">
+            <img alt="Hero" class="w-full h-full object-cover"
+                src="/static/images/453a852e-5a3f-42a9-897a-bfe23d70981f.jpg" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
+                <div class="px-12">
+                    <h1 class="text-5xl font-bold text-white mb-4">Web3 Shopping<br />Revolution</h1>
+                    <p class="text-xl text-white/90 mb-8">Shop with crypto. Secure. Simple. Smart.</p>
+                    <button class="!rounded-button bg-custom text-white px-6 py-3 text-lg">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Shop by Category</h2>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"> <img
+                        alt="Electronics" class="w-full h-48 object-cover"
+                        src="/static/images/29bf227e-3023-40c9-b6d4-52048839fb44.jpg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <h3 class="text-white text-lg font-medium">Electronics</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"> <img
+                        alt="Fashion" class="w-full h-48 object-cover"
+                        src="/static/images/d465e5cb-a7cb-4978-9a28-b93bddd889b2.jpg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <h3 class="text-white text-lg font-medium">Fashion</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"> <img
+                        alt="Home" class="w-full h-48 object-cover"
+                        src="/static/images/7e323a64-8b3e-4de9-aac0-7e8fe0269baa.jpg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <h3 class="text-white text-lg font-medium">Home</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"> <img
+                        alt="Beauty" class="w-full h-48 object-cover"
+                        src="/static/images/f7ab2a8a-1b0c-43bc-a253-adf47ba826c9.jpg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <h3 class="text-white text-lg font-medium">Beauty</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-semibold">Featured Products</h2>
+                <div class="flex space-x-2">
+                    <button class="glide__bullet" data-glide-dir="=0"></button>
+                    <button class="glide__bullet" data-glide-dir="=1"></button>
+                    <button class="glide__bullet" data-glide-dir="=2"></button>
+                </div>
+            </div>
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                        <div class="glide__slide">
+                            <div class="grid grid-cols-4 gap-6">
+                                <div class="bg-white rounded-lg shadow-sm overflow-hidden"> <img alt="Product"
+                                        class="w-full h-64 object-cover"
+                                        src="/static/images/c2c8ed92-5256-45ee-a122-828d7d566555.jpg" />
+                                    <div class="p-4">
+                                        <h3 class="font-medium mb-2">Premium Smartphone</h3>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-lg font-semibold">0.5 ETH</span>
+                                            <button class="!rounded-button bg-custom text-white px-4 py-2"
+                                                onclick="addToCart('1', 'Premium Smartphone', 0.5, '/static/images/c2c8ed92-5256-45ee-a122-828d7d566555.jpg')">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                                    <img alt="Product" class="w-full h-64 object-cover"
+                                        src="/static/images/239474ef-6fc5-4090-b773-44a89e4182fa.jpg" />
+                                    <div class="p-4">
+                                        <h3 class="font-medium mb-2">Smart Watch Pro</h3>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-lg font-semibold">0.2 ETH</span>
+                                            <button class="!rounded-button bg-custom text-white px-4 py-2"
+                                                onclick="addToCart('2', 'Smart Watch Pro', 0.2, '/static/images/239474ef-6fc5-4090-b773-44a89e4182fa.jpg')">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                                    <img alt="Product" class="w-full h-64 object-cover"
+                                        src="/static/images/841ca2e3-c042-4036-83b5-4ca42012bce9.jpg" />
+                                    <div class="p-4">
+                                        <h3 class="font-medium mb-2">Wireless Headphones</h3>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-lg font-semibold">0.15 ETH</span>
+                                            <button class="!rounded-button bg-custom text-white px-4 py-2"
+                                                onclick="addToCart('3', 'Wireless Headphones', 0.15, '/static/images/841ca2e3-c042-4036-83b5-4ca42012bce9.jpg')">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                                    <img alt="Product" class="w-full h-64 object-cover"
+                                        src="/static/images/d0dfa867-d20e-45cf-8a9b-7d8bd93d43dc.jpg" />
+                                    <div class="p-4">
+                                        <h3 class="font-medium mb-2">Tablet Ultra</h3>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-lg font-semibold">0.3 ETH</span>
+                                            <button class="!rounded-button bg-custom text-white px-4 py-2"
+                                                onclick="addToCart('4', 'Tablet Ultra', 0.3, '/static/images/d0dfa867-d20e-45cf-8a9b-7d8bd93d43dc.jpg')">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glide__slide">
+                            <div class="grid grid-cols-4 gap-6">
+                                <!-- Add more slides if needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12 bg-gradient-to-r from-custom to-indigo-600 rounded-xl overflow-hidden">
+            <div class="px-12 py-16 text-white">
+                <h2 class="text-3xl font-bold mb-4">Special Offers</h2>
+                <p class="text-xl mb-8">Get 20% off when you pay with crypto!</p>
+                <button class="!rounded-button bg-white text-custom px-6 py-3">View Offers</button>
+            </div>
+        </section>
+        <div id="cartPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+                <h2 class="text-xl font-semibold mb-4">Shopping Cart</h2>
+                <ul id="cartItems" class="space-y-4"></ul>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span class="text-lg font-semibold" id="cartTotal">0 ETH</span>
+                </div>
+                <button class="!rounded-button bg-custom text-white px-4 py-2 mt-4" id="buyButton">Buy Now</button>
+                <button class="!rounded-button bg-custom text-white px-4 py-2 mt-4" id="closeCartButton">Close</button>
+            </div>
+        </div>
+        <div id="orderSuccessPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-120 max-w-full">
+                <h2 class="text-xl font-semibold mb-4">Order Successful</h2>
+                <p id="orderDetails" class="mb-4 break-words"></p>
+                <button class="!rounded-button bg-custom text-white px-4 py-2 mt-4" id="closeOrderSuccessButton">Close</button>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img alt="CryptoShop" class="h-8 w-auto mb-4"
+                        src="static/images/ecom.jpeg" />
+                    <p class="text-gray-400">The future of shopping with cryptocurrency.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a class="text-gray-400 hover:text-white" href="#">About Us</a></li>
+                        <li><a class="text-gray-400 hover:text-white" href="#">Contact</a></li>
+                        <li><a class="text-gray-400 hover:text-white" href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a class="text-gray-400 hover:text-white" href="#">Shipping</a></li>
+                        <li><a class="text-gray-400 hover:text-white" href="#">Returns</a></li>
+                        <li><a class="text-gray-400 hover:text-white" href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Newsletter</h3>
+                    <form class="space-y-4"> <input
+                            class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-custom"
+                            placeholder="Enter your email" type="email" /> <button
+                            class="!rounded-button w-full bg-custom text-white px-4 py-2"
+                            type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex justify-between items-center">
+                <div class="flex space-x-6">
+                    <i class="fab fa-ethereum text-2xl text-gray-400 hover:text-white cursor-pointer"></i>
+                    <i class="fab fa-bitcoin text-2xl text-gray-400 hover:text-white cursor-pointer"></i>
+                    <i class="fab fa-cc-visa text-2xl text-gray-400 hover:text-white cursor-pointer"></i>
+                    <i class="fab fa-cc-mastercard text-2xl text-gray-400 hover:text-white cursor-pointer"></i>
+                </div>
+                <div class="flex space-x-6">
+                    <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-discord"></i></a>
+                    <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/glide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            startAt: 0,
+            perView: 1,  // Show only one slide
+            // Removed autoplay to disable automatic sliding
+            breakpoints: {
+                1024: {
+                    perView: 1
+                },
+                768: {
+                    perView: 1
+                },
+                480: {
+                    perView: 1
+                }
+            }
+        }).mount();
+
+        async function connectKeplr() {
+            if (!window.getOfflineSigner || !window.keplr) {
+                alert("Please install Keplr extension");
+                return;
+            }
+
+            try {
+                await window.keplr.enable("agoric");
+                const offlineSigner = window.getOfflineSigner("agoric");
+                const accounts = await offlineSigner.getAccounts();
+                const userWallet = accounts[0].address;
+                console.log('Connected to:', userWallet);
+                document.getElementById('walletAddress').innerText = userWallet;
+                document.getElementById('connectWalletButton').style.display = 'none';
+                document.getElementById('walletDropdown').style.display = 'block';
+                return userWallet;
+            } catch (err) {
+                console.error('Failed to connect wallet', err);
+                alert('Failed to connect wallet');
+            }
+        }
+
+        function disconnectKeplr() {
+            document.getElementById('walletAddress').innerText = '';
+            document.getElementById('connectWalletButton').style.display = 'block';
+            document.getElementById('walletDropdown').style.display = 'none';
+        }
+
+        document.getElementById('connectWalletButton').addEventListener('click', connectKeplr);
+        document.getElementById('disconnectWalletButton').addEventListener('click', disconnectKeplr);
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').innerText = itemCount;
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').innerText = `${total.toFixed(2)} ETH`;
+        }
+
+        function showCartPopup() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('flex', 'items-center', 'space-x-4');
+                li.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                    <span>${item.name} - ${item.price} ETH</span>
+                    <select class="quantity" data-id="${item.id}">
+                        ${[1, 2, 3, 4, 5].map(q => `<option value="${q}" ${q === item.quantity ? 'selected' : ''}>${q}</option>`).join('')}
+                    </select>
+                `;
+                cartItemsContainer.appendChild(li);
+            });
+            updateCartTotal();
+            document.getElementById('cartPopup').classList.remove('hidden');
+
+            // Add event listeners to quantity dropdowns
+            document.querySelectorAll('.quantity').forEach(select => {
+                select.addEventListener('change', (event) => {
+                    const id = event.target.getAttribute('data-id');
+                    const quantity = parseInt(event.target.value);
+                    updateCartItemQuantity(id, quantity);
+                });
+            });
+        }
+
+        function updateCartItemQuantity(productId, quantity) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = quantity;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            }
+        }
+
+        function closeCartPopup() {
+            document.getElementById('cartPopup').classList.add('hidden');
+        }
+
+        document.getElementById('cartButton').addEventListener('click', showCartPopup);
+        document.getElementById('closeCartButton').addEventListener('click', closeCartPopup);
+
+        function addToCart(productId, productName, price, image) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+            const fullImageUrl = image.startsWith('http') ? image : window.location.origin + image;
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, name: productName, price: parseFloat(price).toFixed(2), image: fullImageUrl, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        async function buyProduct() {
+            const userWallet = await connectKeplr();
+            if (!userWallet) {
+                alert("Please connect your wallet");
+                return;
+            }
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty");
+                return;
+            }
+
+            // Update quantities
+            document.querySelectorAll('.quantity').forEach(select => {
+                const id = select.getAttribute('data-id');
+                const item = cart.find(item => item.id === id);
+                if (item) {
+                    item.quantity = parseInt(select.value);
+                }
+            });
+
+            // Send the transaction to Flask backend
+            fetch('/buy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    products: cart,
+                    user_wallet: userWallet
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    localStorage.removeItem('cart');
+                    updateCartCount();
+                    const transactionHashes = data.transaction_hashes.join(', ');
+                    document.getElementById('orderDetails').innerText = `Transaction successful! \nTransaction Hash: ${transactionHashes}`;
+                    document.getElementById('orderSuccessPopup').classList.remove('hidden');
+                } else {
+                    document.getElementById('transactionDetails').innerText = 'Transaction failed';
+                    document.getElementById('transactionDetails').style.display = 'block';
+                }
+            })
+            .catch(err => {
+                document.getElementById('transactionDetails').innerText = 'Error: ' + err.message;
+                document.getElementById('transactionDetails').style.display = 'block';
+            });
+        }
+
+        document.getElementById('buyButton').addEventListener('click', buyProduct);
+        document.getElementById('closeOrderSuccessButton').addEventListener('click', () => {
+            document.getElementById('orderSuccessPopup').classList.add('hidden');
+            updateCartCount();  // Ensure cart count is updated after closing the popup
+            window.location.href = '/';  // Redirect to home page
+        });
+
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+
+</html>
